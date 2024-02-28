@@ -81,7 +81,9 @@ public class drapaTHEIALogPackProducer {
     public static void sendLog(File file, Properties properties, String topic) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String jsonline;
-        PDM.LogPack.Builder logpack_builder = PDM.LogPack.newBuilder();
+        PDM.LogPack.Builder logpack_builder_train = PDM.LogPack.newBuilder();
+        PDM.LogPack.Builder logpack_builder_test = PDM.LogPack.newBuilder();
+
 
         KafkaProducer<String, PDM.LogPack> kafkaProducer = new KafkaProducer<>(properties);
         drapaTHEIALogParser drapaTHEIALogParser = new drapaTHEIALogParser();
@@ -91,7 +93,8 @@ public class drapaTHEIALogPackProducer {
             jsonCount ++;
 
             if (jsonCount % 50 == 0){
-                kafkaProducer.send(new ProducerRecord<>(topic, logpack_builder.build()));
+                kafkaProducer.send(new ProducerRecord<>(topic + "-train", logpack_builder_train.build()));
+                kafkaProducer.send(new ProducerRecord<>(topic + "-test", logpack_builder_test.build()));
                 if (jsonCount % 300000 == 0) {
                     System.out.println("jsonCount: " + jsonCount);
                     System.out.println("logCount: " + logCount);
@@ -102,14 +105,20 @@ public class drapaTHEIALogPackProducer {
 //                if (jsonCount >= 2765999){
 //                    break;
 //                }
-                logpack_builder = PDM.LogPack.newBuilder();
+                logpack_builder_train = PDM.LogPack.newBuilder();
+                logpack_builder_test = PDM.LogPack.newBuilder();
 
             }
 
             ArrayList<PDM.Log> logs = drapaTHEIALogParser.jsonParse(jsonline);
             try{
                 for(PDM.Log log : logs) {
-                    logpack_builder.addData(log);
+                    if(log.getEventData().getEHeader().getTs() < 1523332800){
+                        logpack_builder_train.addData(log);
+                    }
+                    else{
+                        logpack_builder_test.addData(log);
+                    }
                     logCount++;
                 }
             }catch (NullPointerException e){
@@ -118,7 +127,9 @@ public class drapaTHEIALogPackProducer {
 
         }
 
-        kafkaProducer.send(new ProducerRecord<>(topic, logpack_builder.build()));
+        kafkaProducer.send(new ProducerRecord<>(topic + "-train", logpack_builder_train.build()));
+        kafkaProducer.send(new ProducerRecord<>(topic + "-test", logpack_builder_test.build()));
+
         System.out.println("jsonCount: " + jsonCount);
         System.out.println("logCount: " + logCount);
         System.out.println("logPackCount: " + logPackCount);

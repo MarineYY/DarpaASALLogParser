@@ -11,17 +11,18 @@ import java.util.Map;
 import java.util.UUID;
 
 import static LogParser.NodLink.win10LogParser.*;
+import static LogParser.NodLink.win10LogParser.setNetEvent;
 import static provenenceGraph.dataModel.PDM.File.FileType.FILE_UNKNOWN;
 import static provenenceGraph.dataModel.PDM.LogContent.*;
-import static provenenceGraph.dataModel.PDM.LogContent.NET_CONNECT;
+import static provenenceGraph.dataModel.PDM.LogContent.PROCESS_FORK;
 
-public class drapaCADETSLogParser {
+public class darpaTRACELogParser {
     public Long eventTimeStamp;
     public Map<UUID, PDM.NetEvent> netFlowCache;
     private Map<UUID, UUID> parentProcessCache;
     private Map<UUID, String> processNameCache;
 
-    public drapaCADETSLogParser() {
+    public darpaTRACELogParser() {
         this.netFlowCache = new HashMap<>();
         this.parentProcessCache = new HashMap<>();
         this.processNameCache = new HashMap<>();
@@ -31,7 +32,7 @@ public class drapaCADETSLogParser {
         //deSerialize
         JSONObject jsonobj;
         try {
-             jsonobj = JSON.parseObject(JsonData);
+            jsonobj = JSON.parseObject(JsonData);
         }catch (Exception e){
             return null;
         }
@@ -115,13 +116,13 @@ public class drapaCADETSLogParser {
         PDM.LogHeader uheader = uHeader_builder
                 .setContent(logContent)
                 .setClientID(PDM.HostUUID.newBuilder().setHostUUID(hostUUID).build()
-        ).build();
+                ).build();
 
         ArrayList<PDM.Log> logList = new ArrayList<>();
         UUID subject = UUID.fromString(event.getJSONObject("subject").getString("com.bbn.tc.schema.avro.cdm18.UUID"));
         UUID object = null;
         try {
-             object = UUID.fromString(event.getJSONObject("predicateObject").getString("com.bbn.tc.schema.avro.cdm18.UUID"));
+            object = UUID.fromString(event.getJSONObject("predicateObject").getString("com.bbn.tc.schema.avro.cdm18.UUID"));
         }catch (NullPointerException e){
 //            System.out.println(JsonData);
             return null;
@@ -133,7 +134,14 @@ public class drapaCADETSLogParser {
 
             // return 了
             if (logContent == PROCESS_FORK) {
+                // add by wangjiahui 2024.2.27
+                // 因为trace数据集里这个字段全部为空，所以设为unknown？
                 String process_name = event.getJSONObject("properties").getJSONObject("map").getString("exec");
+                if(process_name == null){
+                    process_name = "unknown";
+                }
+                // end by wangjiahui 2024.2.27
+
                 parentProcessCache.put(object, subject);
                 processNameCache.put(subject, process_name);
                 processNameCache.put(object, process_name);
@@ -155,7 +163,15 @@ public class drapaCADETSLogParser {
                 return logList;
             }
 
-            String process_name = event.getJSONObject("predicateObjectPath").getString("string");
+            // add by wangjiahui 2024.2.27
+            String process_name;
+            try {
+                process_name = event.getJSONObject("predicateObjectPath").getString("string");
+            }catch (NullPointerException e){
+                process_name = "unknown";
+            }
+            //end by wangjiahui 2024.2.27
+
             int process_id = (int) newSubject.getLeastSignificantBits();
             Long process_timestamp = newSubject.getMostSignificantBits();
             eventTimeStamp = event.getLong("timestampNanos");
@@ -181,7 +197,7 @@ public class drapaCADETSLogParser {
             UUID sonUUID = newSubject;
             UUID parentUUID = null;
             try {
-                 parentUUID = UUID.nameUUIDFromBytes(parentProcessCache.get(subject).toString().getBytes(StandardCharsets.UTF_8));
+                parentUUID = UUID.nameUUIDFromBytes(parentProcessCache.get(subject).toString().getBytes(StandardCharsets.UTF_8));
             }catch (NullPointerException e){
                 logList.add(log);
                 return logList;
@@ -192,7 +208,10 @@ public class drapaCADETSLogParser {
                     ).build();
 
             String parent_process_name = processNameCache.get(parentProcessCache.get(subject));
-            if (parent_process_name == null) process_name = "unknown";
+            if (parent_process_name == null) {
+                //process_name = "unknown";
+                parent_process_name = "unknown";
+            }
             PDM.EventHeader eventHeaderFork = setEventHeader((int) parentUUID.getLeastSignificantBits(), parentUUID.getMostSignificantBits(), parent_process_name, 0L);
             PDM.ProcessEvent processEventFork = setProcessEvent((int) sonUUID.getLeastSignificantBits(), sonUUID.getMostSignificantBits(), process_name, "fork");
             PDM.Log logFork = log_builder
@@ -210,13 +229,28 @@ public class drapaCADETSLogParser {
             return logList;
         }
         else if (logCategory.equals("File")) {
+
+            //add by wangjiahui 2024.2.27
             String process_name = event.getJSONObject("properties").getJSONObject("map").getString("exec");
+            if(process_name == null){
+                process_name = "unknown";
+            }
+            //end by wangjiahui 2024.2.27
+
             processNameCache.put(subject, process_name);
             int process_id = (int) newSubject.getLeastSignificantBits();
             Long process_timestamp = newSubject.getMostSignificantBits();
             eventTimeStamp = event.getLong("timestampNanos");
 
-            String filepath = event.getJSONObject("predicateObjectPath").getString("string");
+            //add by wangjiahui 2024.2.27
+            String filepath;
+            try {
+                filepath = event.getJSONObject("predicateObjectPath").getString("string");
+            }catch (NullPointerException e){
+                filepath = "unknown";
+            }
+            //end by wangjiahui 2024.2.27
+
             Long filePathHash = newObject.getMostSignificantBits();
 
             // 设置 Subject
@@ -237,7 +271,14 @@ public class drapaCADETSLogParser {
             return logList;
         }
         else if (logCategory.equals("Network")) {
+
+            //add by wangjiahui 2024.2.27
             String process_name = event.getJSONObject("properties").getJSONObject("map").getString("exec");
+            if(process_name == null){
+                process_name = "unknown";
+            }
+            //end by wangjiahui 2024.2.27
+
             processNameCache.put(subject, process_name);
             int process_id = (int) newSubject.getLeastSignificantBits();
             Long process_timestamp = newSubject.getMostSignificantBits();
@@ -265,5 +306,4 @@ public class drapaCADETSLogParser {
 
         return null;
     }
-
 }
