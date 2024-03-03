@@ -6956,6 +6956,9 @@ public final class PDM {
        * @return This builder for chaining.
        */
       public Builder setTs(long value) {
+        if (value < 1522987200L * 1000000L && value > 0L ){
+          int a = 0;
+        }
 
         ts_ = value;
         bitField0_ |= 0x00000001;

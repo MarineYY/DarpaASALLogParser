@@ -23,13 +23,13 @@ public class drapaCADETSLogPackProducer {
         /*
         Folder : ta1-cadets-e3-official.json
          */
-        String folderPathTHEIA = "src/main/systemLog/cadets/ta1-cadets-e3-official-2.json/";
+        String folderPath = "/Users/lexus/Documents/research/APT/Data/raw/E3-cadets-1/";
         System.out.println("start sending ...\n");
-        for (int i = 0; i < 2; i ++) {
-            File file = new File(folderPathTHEIA + "ta1-cadets-e3-official-2.json." + i);
-            if (i == 0) file = new File(folderPathTHEIA + "ta1-cadets-e3-official-2.json");
+        for (int i = 0; i < 3; i ++) {
+            File file = new File(folderPath + "ta1-cadets-e3-official.json." + i);
+            if (i == 0) file = new File(folderPath + "ta1-cadets-e3-official.json");
             System.out.println("文件：  " + file.toString());
-            sendLog(file, properties, "topic-CADETS-2");
+            sendLog(file, properties, "topic-CADETS-0");
         }
         System.out.println("end...");
     }
@@ -65,7 +65,8 @@ public class drapaCADETSLogPackProducer {
             ArrayList<PDM.Log> logs = drapaCADETSLogParser.jsonParse(jsonline);
             try{
                 for(PDM.Log log : logs) {
-                    if(log.getEventData().getEHeader().getTs() < 1523332800){
+                    if(log.getEventData().getEHeader().getTs() < 1522987200L * 1000000000L){
+//                        System.out.println(log.getEventData().getEHeader().getTs());
                         logpack_builder_train.addData(log);
                     }
                     else{
