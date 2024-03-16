@@ -1,0 +1,98 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "E1071600-0000-0000-0000-000000000020",
+                "type": "SUBJECT_PROCESS",
+                "cid": 2017,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "localPrincipal": "EC000000-0000-0000-0000-000000000060",
+                "startTimestampNanos": 1523278883074409905,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/lib/thunderbird/thunderbird"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "tgid": "23066",
+                        "path": "/usr/lib/thunderbird/thunderbird"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "4EEFB3D2-12C6-2315-9F01-000000000010",
+                "sequence": {
+                    "long": 6772206
+                },
+                "type": "EVENT_RECVFROM",
+                "threadId": {
+                    "int": 2017
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "E1071600-0000-0000-0000-000000000020"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "FEFFFFFF-0000-FFFF-FFFF-000000000040"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "predicateObject2Path": null,
+                "timestampNanos": 1523278883128078158,
+                "name": {
+                    "string": "recvfrom"
+                },
+                "parameters": null,
+                "location": null,
+                "size": {
+                    "long": 76
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "rc": "76"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.NetFlowObject": {
+                "uuid": "FEFFFFFF-0000-FFFF-FFFF-000000000040",
+                "baseObject": {
+                    "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": null
+                },
+                "localAddress": "LOCAL",
+                "localPort": 0,
+                "remoteAddress": "NA",
+                "remotePort": 0,
+                "ipProtocol": null,
+                "fileDescriptor": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    }
+]

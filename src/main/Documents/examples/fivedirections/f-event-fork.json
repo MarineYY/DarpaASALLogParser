@@ -1,0 +1,109 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "F75456F7-D8BD-4F9A-A9EC-3E04086694B2",
+                "type": "SUBJECT_THREAD",
+                "cid": 1020,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "DBA5D994-A580-4379-A9A2-8348D11FDD23"
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523626952762000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": null,
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "6DFA6F04-848C-4E78-8C0A-1483159C808E",
+                "sequence": {
+                    "long": 0
+                },
+                "type": "EVENT_FORK",
+                "threadId": {
+                    "int": 0
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "F75456F7-D8BD-4F9A-A9EC-3E04086694B2"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "BB4E94CA-4861-403B-AFC9-9529EDFED6B7"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523627015420000000,
+                "name": {
+                    "string": "EVENT_FORK"
+                },
+                "parameters": null,
+                "location": {
+                    "long": 0
+                },
+                "size": {
+                    "long": 0
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "ParentID": "624",
+                        "PackageFullName": "",
+                        "UniqueProcessKey": "-67057104157248",
+                        "Flags": "0",
+                        "UserSID": "S-1-5-18",
+                        "ExitStatus": "259",
+                        "CommandLine": "\"LogonUI.exe\" /flags:0x0 /state0:0xa3fb9855 /state1:0x41c64e6d",
+                        "Username": "S-1-5-18",
+                        "ImageFileName": "LogonUI.exe",
+                        "ProcessID": "400",
+                        "ApplicationID": "",
+                        "SessionID": "1",
+                        "DirectoryTableBase": "5705035776"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "BB4E94CA-4861-403B-AFC9-9529EDFED6B7",
+                "type": "SUBJECT_PROCESS",
+                "cid": 400,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "DBA5D994-A580-4379-A9A2-8348D11FDD23"
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523627015420000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "\"LogonUI.exe\" /flags:0x0 /state0:0xa3fb9855 /state1:0x41c64e6d"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    }
+]

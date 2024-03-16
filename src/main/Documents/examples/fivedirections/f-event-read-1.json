@@ -1,0 +1,97 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "DF3D9789-C388-440B-92B9-80D45E7E96D4",
+                "type": "SUBJECT_PROCESS",
+                "cid": 668,
+                "parentSubject": null,
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523626653144000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "lsass.exe"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "791D9014-6F4A-4F83-A9E2-FB6B5871D119",
+                "sequence": {
+                    "long": 0
+                },
+                "type": "EVENT_READ",
+                "threadId": {
+                    "int": 0
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "DF3D9789-C388-440B-92B9-80D45E7E96D4"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "0BCE7E88-FD42-4F41-9DFF-5C8D60DD2406"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523626653225000000,
+                "name": {
+                    "string": "EVENT_READ"
+                },
+                "parameters": null,
+                "location": {
+                    "long": 0
+                },
+                "size": {
+                    "long": 0
+                },
+                "programPoint": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.RegistryKeyObject": {
+                "uuid": "0BCE7E88-FD42-4F41-9DFF-5C8D60DD2406",
+                "baseObject": {
+                    "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": null
+                },
+                "key": "\\REGISTRY\\MACHINE\\SAM\\SAM\\Domains\\Account\\Users\\000003E9",
+                "value": {
+                    "com.bbn.tc.schema.avro.cdm18.Value": {
+                        "size": -1,
+                        "type": "VALUE_TYPE_SRC",
+                        "valueDataType": "VALUE_DATA_TYPE_BYTE",
+                        "isNull": true,
+                        "name": null,
+                        "runtimeDataType": null,
+                        "valueBytes": null,
+                        "provenance": null,
+                        "tag": null,
+                        "components": null
+                    }
+                },
+                "size": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    }
+]

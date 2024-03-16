@@ -1,0 +1,107 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D",
+                "type": "SUBJECT_PROCESS",
+                "cid": 3247,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "758FC205-A5ED-01A4-1088-C207007F92E7"
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "localPrincipal": "29895546-B124-1BEC-E91C-C9107B81C616",
+                "startTimestampNanos": 1523628206766000000,
+                "unitId": {
+                    "int": 0
+                },
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/sbin/sshd -D -R"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "name": "sshd",
+                        "cwd": "/",
+                        "ppid": "1810"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "7109339C-3245-948A-DC54-09AC40CC5CAC",
+                "sequence": {
+                    "long": 2821
+                },
+                "type": "EVENT_FORK",
+                "threadId": {
+                    "int": 3247
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "6678BD6D-A7A1-4910-6DA9-F50E103CF9FA"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523628206770000000,
+                "name": null,
+                "parameters": null,
+                "location": null,
+                "size": null,
+                "programPoint": null,
+                "properties": {
+                    "map": {}
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "6678BD6D-A7A1-4910-6DA9-F50E103CF9FA",
+                "type": "SUBJECT_PROCESS",
+                "cid": 3248,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D"
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "localPrincipal": "29895546-B124-1BEC-E91C-C9107B81C616",
+                "startTimestampNanos": 1523628206770000000,
+                "unitId": {
+                    "int": 0
+                },
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/sbin/sshd -D -R"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "name": "sshd",
+                        "cwd": "/",
+                        "ppid": "3247"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    }
+]

@@ -1,0 +1,99 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "6D4E23BA-421D-420B-A1E5-B4C73771CEE1",
+                "type": "SUBJECT_PROCESS",
+                "cid": 6464,
+                "parentSubject": null,
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523626653144000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "backgroundTaskHost.exe"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "7467C55D-404B-4E39-9888-B59F45A1C3CF",
+                "sequence": {
+                    "long": 0
+                },
+                "type": "EVENT_WRITE",
+                "threadId": {
+                    "int": 0
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "6D4E23BA-421D-420B-A1E5-B4C73771CEE1"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "EA52D652-0761-4468-A078-2BD952C41185"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523626792199000000,
+                "name": {
+                    "string": "EVENT_WRITE"
+                },
+                "parameters": null,
+                "location": {
+                    "long": 0
+                },
+                "size": {
+                    "long": 0
+                },
+                "programPoint": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.RegistryKeyObject": {
+                "uuid": "EA52D652-0761-4468-A078-2BD952C41185",
+                "baseObject": {
+                    "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": null
+                },
+                "key": "\\REGISTRY\\A\\{f37d3615-870c-9c0a-25d5-b1be45077837}\\LocalState\\Common",
+                "value": {
+                    "com.bbn.tc.schema.avro.cdm18.Value": {
+                        "size": -1,
+                        "type": "VALUE_TYPE_SRC",
+                        "valueDataType": "VALUE_DATA_TYPE_BYTE",
+                        "isNull": true,
+                        "name": {
+                            "string": "TaskExecutionCountSinceLastReset"
+                        },
+                        "runtimeDataType": null,
+                        "valueBytes": null,
+                        "provenance": null,
+                        "tag": null,
+                        "components": null
+                    }
+                },
+                "size": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    }
+]

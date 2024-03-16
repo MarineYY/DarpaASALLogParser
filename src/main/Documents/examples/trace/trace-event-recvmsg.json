@@ -1,0 +1,99 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "F8EDFBE2-0344-DF62-C87C-858CCBFFEB69",
+                "type": "SUBJECT_PROCESS",
+                "cid": 1170,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "C9BC00BE-3A39-2D92-38A1-75986BEBA1C6"
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "localPrincipal": "D846C2C7-DE92-627E-2CA7-86577CBA5ADC",
+                "startTimestampNanos": 0,
+                "unitId": {
+                    "int": 0
+                },
+                "iteration": null,
+                "count": null,
+                "cmdLine": null,
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "name": "avahi-daemon",
+                        "seen time": "1523627788.510",
+                        "ppid": "1"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "4705ED5B-D737-F877-623E-F84851EFDC6D",
+                "sequence": {
+                    "long": 53
+                },
+                "type": "EVENT_RECVMSG",
+                "threadId": {
+                    "int": 1170
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "F8EDFBE2-0344-DF62-C87C-858CCBFFEB69"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "0D0B7E42-66ED-FC67-D5D3-2FDAE7467BDD"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523627788642000000,
+                "name": null,
+                "parameters": null,
+                "location": null,
+                "size": {
+                    "long": 94
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {}
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.NetFlowObject": {
+                "uuid": "0D0B7E42-66ED-FC67-D5D3-2FDAE7467BDD",
+                "baseObject": {
+                    "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                    "permission": null,
+                    "epoch": {
+                        "int": 0
+                    },
+                    "properties": {
+                        "map": {}
+                    }
+                },
+                "localAddress": "0.0.0.0",
+                "localPort": 5353,
+                "remoteAddress": "128.55.12.171",
+                "remotePort": 5353,
+                "ipProtocol": {
+                    "int": 17
+                },
+                "fileDescriptor": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    }
+]

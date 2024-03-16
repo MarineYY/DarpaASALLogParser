@@ -1,0 +1,104 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "25050F00-0000-0000-0000-000000000020",
+                "type": "SUBJECT_PROCESS",
+                "cid": 1317,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "localPrincipal": "74000000-0000-0000-0000-000000000060",
+                "startTimestampNanos": 1523278015004724496,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/lib/postgresql/9.1/bin/postgres -D /var/lib/postgresql/9.1/main -c config_file=/etc/postgresql/9.1/main/postgresql.conf"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "tgid": "29105",
+                        "path": "/usr/lib/postgresql/9.1/bin/postgres"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "167785B2-48C5-2315-0200-000000000010",
+                "sequence": {
+                    "long": 12860
+                },
+                "type": "EVENT_READ",
+                "threadId": {
+                    "int": 1317
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "25050F00-0000-0000-0000-000000000020"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "0100D00F-EE11-1E00-0000-00009A093925"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "predicateObject2Path": null,
+                "timestampNanos": 1523278015004768022,
+                "name": {
+                    "string": "read"
+                },
+                "parameters": null,
+                "location": null,
+                "size": {
+                    "long": 100
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {}
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.FileObject": {
+                "uuid": "0100D00F-EE11-1E00-0000-00009A093925",
+                "baseObject": {
+                    "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": {
+                        "map": {
+                            "dev": "265289729",
+                            "inode": "1970670",
+                            "filename": "/var/lib/postgresql/9.1/main/postmaster.pid"
+                        }
+                    }
+                },
+                "type": "FILE_OBJECT_BLOCK",
+                "fileDescriptor": null,
+                "localPrincipal": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "74000000-0000-0000-0000-000000000060"
+                },
+                "size": null,
+                "peInfo": null,
+                "hashes": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    }
+]

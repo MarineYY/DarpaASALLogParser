@@ -1,0 +1,107 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D",
+                "type": "SUBJECT_PROCESS",
+                "cid": 3247,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "758FC205-A5ED-01A4-1088-C207007F92E7"
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "localPrincipal": "29895546-B124-1BEC-E91C-C9107B81C616",
+                "startTimestampNanos": 1523628206766000000,
+                "unitId": {
+                    "int": 0
+                },
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/sbin/sshd -D -R"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "name": "sshd",
+                        "cwd": "/",
+                        "ppid": "1810"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "D9791FC2-9B78-2FFA-5478-2A034DB54B92",
+                "sequence": {
+                    "long": 2432
+                },
+                "type": "EVENT_OPEN",
+                "threadId": {
+                    "int": 3247
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "D0F1765D-7588-7BD1-3E3F-F99A37CAB24F"
+                },
+                "predicateObjectPath": {
+                    "string": "/lib/x86_64-linux-gnu/libdbus-1.so.3"
+                },
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523628206766000000,
+                "name": null,
+                "parameters": null,
+                "location": null,
+                "size": null,
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "mode": "3773160264230710",
+                        "flags": "O_RDONLY",
+                        "opm": "Used"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.FileObject": {
+                "uuid": "D0F1765D-7588-7BD1-3E3F-F99A37CAB24F",
+                "baseObject": {
+                    "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                    "permission": {
+                        "com.bbn.tc.schema.avro.cdm18.SHORT": "01A4"
+                    },
+                    "epoch": {
+                        "int": 0
+                    },
+                    "properties": {
+                        "map": {
+                            "path": "/lib/x86_64-linux-gnu/libdbus-1.so.3"
+                        }
+                    }
+                },
+                "type": "FILE_OBJECT_FILE",
+                "fileDescriptor": null,
+                "localPrincipal": null,
+                "size": null,
+                "peInfo": null,
+                "hashes": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    }
+]

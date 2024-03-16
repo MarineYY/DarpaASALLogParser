@@ -1,0 +1,93 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "848DAF4F-8B70-4EAD-8554-26934ECECB76",
+                "type": "SUBJECT_PROCESS",
+                "cid": 4964,
+                "parentSubject": null,
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523626653144000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "explorer.exe"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "89F4FF1A-30E4-4499-A03A-1E95687DDC56",
+                "sequence": {
+                    "long": 0
+                },
+                "type": "EVENT_OPEN",
+                "threadId": {
+                    "int": 0
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "848DAF4F-8B70-4EAD-8554-26934ECECB76"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "857106FB-A3EC-42A6-B7A2-88E307D0F94E"
+                },
+                "predicateObjectPath": {
+                    "string": "C:\\Windows\\System32\\ploptin.dll"
+                },
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523626717761000000,
+                "name": {
+                    "string": "EVENT_OPEN"
+                },
+                "parameters": null,
+                "location": {
+                    "long": 0
+                },
+                "size": {
+                    "long": 0
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "permissions": "execute"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.FileObject": {
+                "uuid": "857106FB-A3EC-42A6-B7A2-88E307D0F94E",
+                "baseObject": {
+                    "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": null
+                },
+                "type": "FILE_OBJECT_FILE",
+                "fileDescriptor": null,
+                "localPrincipal": null,
+                "size": null,
+                "peInfo": null,
+                "hashes": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    }
+]

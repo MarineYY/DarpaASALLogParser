@@ -1,0 +1,99 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "B17105EE-0300-0000-0000-000000000020",
+                "type": "SUBJECT_PROCESS",
+                "cid": 29105,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "25050F00-0000-0000-0000-000000000020"
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "localPrincipal": "74000000-0000-0000-0000-000000000060",
+                "startTimestampNanos": 1523278015004724496,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/lib/postgresql/9.1/bin/postgres -D /var/lib/postgresql/9.1/main -c config_file=/etc/postgresql/9.1/main/postgresql.conf"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "tgid": "29105",
+                        "path": "/usr/lib/postgresql/9.1/bin/postgres",
+                        "ppid": "1317"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "BC8E88B2-48C5-2315-0600-000000000010",
+                "sequence": {
+                    "long": 5
+                },
+                "type": "EVENT_SENDTO",
+                "threadId": {
+                    "int": 29105
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "B17105EE-0300-0000-0000-000000000020"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "7F000001-D598-7F00-0001-D59800000040"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "predicateObject2Path": null,
+                "timestampNanos": 1523278015004970684,
+                "name": {
+                    "string": "sendto"
+                },
+                "parameters": null,
+                "location": null,
+                "size": {
+                    "long": 24
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "rc": "24"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.NetFlowObject": {
+                "uuid": "7F000001-D598-7F00-0001-D59800000040",
+                "baseObject": {
+                    "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": null
+                },
+                "localAddress": "127.0.0.1",
+                "localPort": 39125,
+                "remoteAddress": "127.0.0.1",
+                "remotePort": 39125,
+                "ipProtocol": null,
+                "fileDescriptor": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    }
+]

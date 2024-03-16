@@ -1,0 +1,99 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "0072F5F4-0300-0000-0000-000000000020",
+                "type": "SUBJECT_PROCESS",
+                "cid": 29184,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "01000000-0000-0000-0000-000000000020"
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "localPrincipal": "E8000000-0000-0000-0000-000000000060",
+                "startTimestampNanos": 1523279791421796724,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "tgid": "2184",
+                        "path": "/usr/bin/python2.7",
+                        "ppid": "1"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "7ABC3B4D-E6C6-2315-2418-000000000010",
+                "sequence": {
+                    "long": 1
+                },
+                "type": "EVENT_RECVMSG",
+                "threadId": {
+                    "int": 29184
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "0072F5F4-0300-0000-0000-000000000020"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "0A00063C-8808-0A00-063C-000000000040"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "predicateObject2Path": null,
+                "timestampNanos": 1523279791421897850,
+                "name": {
+                    "string": "recvmsg"
+                },
+                "parameters": null,
+                "location": null,
+                "size": {
+                    "long": 168
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "rc": "168"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.NetFlowObject": {
+                "uuid": "0A00063C-8808-0A00-063C-000000000040",
+                "baseObject": {
+                    "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": null
+                },
+                "localAddress": "NETLINK",
+                "localPort": 2184,
+                "remoteAddress": "NETLINK",
+                "remotePort": 0,
+                "ipProtocol": null,
+                "fileDescriptor": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    }
+]

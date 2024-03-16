@@ -1,0 +1,98 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "84DA7E37-1A34-42AF-A642-B3E382A6CA14",
+                "type": "SUBJECT_THREAD",
+                "cid": 6900,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "D46EE5FB-3895-4CBB-9C67-C6946A7DA41B"
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523626952851000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": null,
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "466C4962-423B-4343-8E05-B4523FFFD8D9",
+                "sequence": {
+                    "long": 0
+                },
+                "type": "EVENT_OPEN",
+                "threadId": {
+                    "int": 0
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "84DA7E37-1A34-42AF-A642-B3E382A6CA14"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "D46EE5FB-3895-4CBB-9C67-C6946A7DA41B"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523626952852000000,
+                "name": {
+                    "string": "EVENT_OPEN"
+                },
+                "parameters": null,
+                "location": {
+                    "long": 0
+                },
+                "size": {
+                    "long": 0
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "handle": "800014e4",
+                        "targetObject": "ffffc3030f913080"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "D46EE5FB-3895-4CBB-9C67-C6946A7DA41B",
+                "type": "SUBJECT_PROCESS",
+                "cid": 2624,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "40C2EC03-AE84-489E-B6CB-5D6264F80A32"
+                },
+                "hostId": "47923ED7-29D4-4E65-ABA2-F70A4E74DCCD",
+                "localPrincipal": "00000000-0000-0000-0000-000000000000",
+                "startTimestampNanos": 1523626952851000000,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "\"C:\\lwabeat\\\\lwabeat.exe\" -c \"C:\\lwabeat\\\\lwabeat.fivedir.yml\" -path.home \"C:\\lwabeat\" -path.data \"C:\\\\ProgramData\\\\lwa\""
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_WINDOWS_FIVEDIRECTIONS"
+    }
+]

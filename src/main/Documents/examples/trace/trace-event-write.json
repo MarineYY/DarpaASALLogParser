@@ -1,0 +1,99 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D",
+                "type": "SUBJECT_PROCESS",
+                "cid": 3247,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "758FC205-A5ED-01A4-1088-C207007F92E7"
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "localPrincipal": "29895546-B124-1BEC-E91C-C9107B81C616",
+                "startTimestampNanos": 1523628206766000000,
+                "unitId": {
+                    "int": 0
+                },
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/sbin/sshd -D -R"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "name": "sshd",
+                        "cwd": "/",
+                        "ppid": "1810"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "1AAC131E-50B1-281E-DB70-071FB61709D1",
+                "sequence": {
+                    "long": 2835
+                },
+                "type": "EVENT_WRITE",
+                "threadId": {
+                    "int": 3247
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "B10FE1BE-FA58-FF71-C37D-ED0F6CC6BB7D"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "A7B0995A-4879-1A84-D26D-F20CC5A8921B"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523628206782000000,
+                "name": null,
+                "parameters": null,
+                "location": null,
+                "size": {
+                    "long": 104
+                },
+                "programPoint": null,
+                "properties": {
+                    "map": {}
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.SrcSinkObject": {
+                "uuid": "A7B0995A-4879-1A84-D26D-F20CC5A8921B",
+                "baseObject": {
+                    "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                    "permission": null,
+                    "epoch": {
+                        "int": 0
+                    },
+                    "properties": {
+                        "map": {
+                            "pid": "3247"
+                        }
+                    }
+                },
+                "type": "SRCSINK_UNKNOWN",
+                "fileDescriptor": {
+                    "int": 6
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    }
+]

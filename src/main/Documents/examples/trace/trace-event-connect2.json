@@ -1,0 +1,99 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "2421B66A-D540-585B-3D54-9481283856F3",
+                "type": "SUBJECT_PROCESS",
+                "cid": 2446,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "C9BC00BE-3A39-2D92-38A1-75986BEBA1C6"
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "localPrincipal": "55D21AD8-CB1D-3708-3FDA-1DBD2D826128",
+                "startTimestampNanos": 0,
+                "unitId": {
+                    "int": 0
+                },
+                "iteration": null,
+                "count": null,
+                "cmdLine": null,
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "name": "Thunar",
+                        "seen time": "1523629091.792",
+                        "ppid": "1"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "E93F413D-96B6-0514-23D6-6A1A6DB89C7E",
+                "sequence": {
+                    "long": 535101
+                },
+                "type": "EVENT_CONNECT",
+                "threadId": {
+                    "int": 2446
+                },
+                "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "2421B66A-D540-585B-3D54-9481283856F3"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "EB759832-DF30-D9E4-D689-D8B28D2B3756"
+                },
+                "predicateObjectPath": {
+                    "string": "/dbus-vfs-daemon/socket-7yW3rW6U"
+                },
+                "predicateObject2": null,
+                "predicateObject2Path": null,
+                "timestampNanos": 1523629091796000000,
+                "name": null,
+                "parameters": null,
+                "location": null,
+                "size": null,
+                "programPoint": null,
+                "properties": {
+                    "map": {}
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.FileObject": {
+                "uuid": "EB759832-DF30-D9E4-D689-D8B28D2B3756",
+                "baseObject": {
+                    "hostId": "E621F964-5A66-0F89-30E0-67ADB2A5EC28",
+                    "permission": null,
+                    "epoch": {
+                        "int": 0
+                    },
+                    "properties": {
+                        "map": {
+                            "path": "/dbus-vfs-daemon/socket-7yW3rW6U"
+                        }
+                    }
+                },
+                "type": "FILE_OBJECT_UNIX_SOCKET",
+                "fileDescriptor": null,
+                "localPrincipal": null,
+                "size": null,
+                "peInfo": null,
+                "hashes": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_SYSCALL_TRACE"
+    }
+]

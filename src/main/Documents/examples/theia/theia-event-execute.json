@@ -1,0 +1,103 @@
+[
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Subject": {
+                "uuid": "097472FC-0300-0000-0000-000000000020",
+                "type": "SUBJECT_PROCESS",
+                "cid": 29705,
+                "parentSubject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "4F050F00-0000-0000-0000-000000000020"
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "localPrincipal": "00000000-0000-0000-0000-000000000060",
+                "startTimestampNanos": 1523281707755809581,
+                "unitId": null,
+                "iteration": null,
+                "count": null,
+                "cmdLine": {
+                    "string": "/usr/sbin/console-kit-daemon --no-daemon"
+                },
+                "privilegeLevel": null,
+                "importedLibraries": null,
+                "exportedLibraries": null,
+                "properties": {
+                    "map": {
+                        "tgid": "29705",
+                        "path": "/usr/sbin/console-kit-daemon",
+                        "ppid": "1359"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.Event": {
+                "uuid": "C5F7A87B-A4C8-2315-1C3A-000000000010",
+                "sequence": {
+                    "long": 17
+                },
+                "type": "EVENT_EXECUTE",
+                "threadId": {
+                    "int": 29705
+                },
+                "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                "subject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "097472FC-0300-0000-0000-000000000020"
+                },
+                "predicateObject": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "0100D00F-DD0F-1400-0000-0000487FBA2D"
+                },
+                "predicateObjectPath": null,
+                "predicateObject2": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000000"
+                },
+                "predicateObject2Path": null,
+                "timestampNanos": 1523281707756222405,
+                "name": null,
+                "parameters": null,
+                "location": null,
+                "size": null,
+                "programPoint": null,
+                "properties": {
+                    "map": {
+                        "cmdLine": "/usr/lib/ConsoleKit/run-seat.d/udev-acl.ck seat_added"
+                    }
+                }
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    },
+    {
+        "datum": {
+            "com.bbn.tc.schema.avro.cdm18.FileObject": {
+                "uuid": "0100D00F-DD0F-1400-0000-0000487FBA2D",
+                "baseObject": {
+                    "hostId": "0A00063C-5254-00F0-0D60-000000000070",
+                    "permission": null,
+                    "epoch": null,
+                    "properties": {
+                        "map": {
+                            "dev": "265289729",
+                            "inode": "1314781",
+                            "filename": "/lib/udev/udev-acl"
+                        }
+                    }
+                },
+                "type": "FILE_OBJECT_BLOCK",
+                "fileDescriptor": null,
+                "localPrincipal": {
+                    "com.bbn.tc.schema.avro.cdm18.UUID": "00000000-0000-0000-0000-000000000060"
+                },
+                "size": null,
+                "peInfo": null,
+                "hashes": null
+            }
+        },
+        "CDMVersion": "18",
+        "source": "SOURCE_LINUX_THEIA"
+    }
+]

@@ -1,0 +1,265 @@
+{
+    "datum": {
+        "com.bbn.tc.schema.avro.cdm18.Event": {
+            "uuid": "3EDAE524-F140-566E-8E72-94FE35EDC809",
+            "sequence": {
+                "long": 0
+            },
+            "type": "EVENT_READ",
+            "threadId": {
+                "int": 100214
+            },
+            "hostId": "83C8ED1F-5045-DBCD-B39F-918F0DF4F851",
+            "subject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "C63B54D6-3DC7-11E8-A5CB-3FA3753A265A"
+            },
+            "predicateObject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "C0E60490-62BE-7B5A-BE62-6F2DBA7BA087"
+            },
+            "predicateObjectPath": {
+                "string": "/dev/tty"
+            },
+            "predicateObject2": null,
+            "predicateObject2Path": null,
+            "timestampNanos": 1523478987898404334,
+            "name": {
+                "string": "aue_read"
+            },
+            "parameters": {
+                "array": []
+            },
+            "location": null,
+            "size": {
+                "long": 1
+            },
+            "programPoint": null,
+            "properties": {
+                "map": {
+                    "host": "83c8ed1f-5045-dbcd-b39f-918f0df4f851",
+                    "partial_path": "/dev/tty",
+                    "fd": "0",
+                    "exec": "alpine",
+                    "ppid": "1339"
+                }
+            }
+        }
+    },
+    "CDMVersion": "18",
+    "source": "SOURCE_FREEBSD_DTRACE_CADETS"
+},
+{
+    "datum": {
+        "com.bbn.tc.schema.avro.cdm18.Event": {
+            "uuid": "5CC868CD-FF30-5E2B-BB74-6C5B474A62B2",
+            "sequence": {
+                "long": 1
+            },
+            "type": "EVENT_WRITE",
+            "threadId": {
+                "int": 100214
+            },
+            "hostId": "83C8ED1F-5045-DBCD-B39F-918F0DF4F851",
+            "subject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "C63B54D6-3DC7-11E8-A5CB-3FA3753A265A"
+            },
+            "predicateObject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "C0E60490-62BE-7B5A-BE62-6F2DBA7BA087"
+            },
+            "predicateObjectPath": {
+                "string": "/dev/tty"
+            },
+            "predicateObject2": null,
+            "predicateObject2Path": null,
+            "timestampNanos": 1523478987898404334,
+            "name": {
+                "string": "aue_write"
+            },
+            "parameters": {
+                "array": []
+            },
+            "location": null,
+            "size": {
+                "long": 1
+            },
+            "programPoint": null,
+            "properties": {
+                "map": {
+                    "host": "83c8ed1f-5045-dbcd-b39f-918f0df4f851",
+                    "partial_path": "/dev/tty",
+                    "fd": "1",
+                    "exec": "alpine",
+                    "ppid": "1339"
+                }
+            }
+        }
+    },
+    "CDMVersion": "18",
+    "source": "SOURCE_FREEBSD_DTRACE_CADETS"
+},
+{
+    "datum": {
+        "com.bbn.tc.schema.avro.cdm18.NetFlowObject": {
+            "uuid": "0E6354B8-3DC3-11E8-A5CA-3FA3753A265A",
+            "baseObject": {
+                "hostId": "83C8ED1F-5045-DBCD-B39F-918F0DF4F851",
+                "permission": null,
+                "epoch": null,
+                "properties": {
+                    "map": {}
+                }
+            },
+            "localAddress": "10.0.6.23",
+            "localPort": 123,
+            "remoteAddress": "10.0.4.1",
+            "remotePort": 123,
+            "ipProtocol": null,
+            "fileDescriptor": null
+        }
+    },
+    "CDMVersion": "18",
+    "source": "SOURCE_FREEBSD_DTRACE_CADETS"
+},
+{
+    "datum": {
+        "com.bbn.tc.schema.avro.cdm18.Event": {
+            "uuid": "31617F2D-D084-546E-BB34-8C81DECF5032",
+            "sequence": {
+                "long": 987
+            },
+            "type": "EVENT_RECVFROM",
+            "threadId": {
+                "int": 100131
+            },
+            "hostId": "83C8ED1F-5045-DBCD-B39F-918F0DF4F851",
+            "subject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "0D4F1D78-3DC3-11E8-A5CA-3FA3753A265A"
+            },
+            "predicateObject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "0D4E66DF-3DC3-11E8-A5CA-3FA3753A265A"
+            },
+            "predicateObjectPath": null,
+            "predicateObject2": null,
+            "predicateObject2Path": null,
+            "timestampNanos": 1523479008368596942,
+            "name": {
+                "string": "aue_recvfrom"
+            },
+            "parameters": {
+                "array": []
+            },
+            "location": null,
+            "size": {
+                "long": 106
+            },
+            "programPoint": null,
+            "properties": {
+                "map": {
+                    "host": "83c8ed1f-5045-dbcd-b39f-918f0df4f851",
+                    "ret_msgid": "108086391056891972",
+                    "address": "",
+                    "fd": "8",
+                    "exec": "syslogd",
+                    "ppid": "1"
+                }
+            }
+        }
+    },
+    "CDMVersion": "18",
+    "source": "SOURCE_FREEBSD_DTRACE_CADETS"
+},
+{
+    "datum": {
+        "com.bbn.tc.schema.avro.cdm18.Event": {
+            "uuid": "835EB7B8-CC6A-5940-A952-18469BBFA613",
+            "sequence": {
+                "long": 3
+            },
+            "type": "EVENT_FORK",
+            "threadId": {
+                "int": 100232
+            },
+            "hostId": "83C8ED1F-5045-DBCD-B39F-918F0DF4F851",
+            "subject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "DE7FB6B3-3DC7-11E8-A5CB-3FA3753A265A"
+            },
+            "predicateObject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "0295A18C-3DC8-11E8-A5CB-3FA3753A265A"
+            },
+            "predicateObjectPath": null,
+            "predicateObject2": null,
+            "predicateObject2Path": null,
+            "timestampNanos": 1523478988088604439,
+            "name": {
+                "string": "aue_fork"
+            },
+            "parameters": {
+                "array": []
+            },
+            "location": null,
+            "size": null,
+            "programPoint": null,
+            "properties": {
+                "map": {
+                    "host": "83c8ed1f-5045-dbcd-b39f-918f0df4f851",
+                    "return_value": "1371",
+                    "exec": "bash",
+                    "arg_pid": "1371",
+                    "ppid": "1312"
+                }
+            }
+        }
+    },
+    "CDMVersion": "18",
+    "source": "SOURCE_FREEBSD_DTRACE_CADETS"
+},
+{
+    "datum": {
+        "com.bbn.tc.schema.avro.cdm18.Event": {
+            "uuid": "3F4FE9CD-35AF-5A78-9188-69564522B176",
+            "sequence": {
+                "long": 5
+            },
+            "type": "EVENT_EXECUTE",
+            "threadId": {
+                "int": 100207
+            },
+            "hostId": "83C8ED1F-5045-DBCD-B39F-918F0DF4F851",
+            "subject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "0295A18C-3DC8-11E8-A5CB-3FA3753A265A"
+            },
+            "predicateObject": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "0A5174D8-80FB-4258-BB80-C79A98427D6A"
+            },
+            "predicateObjectPath": {
+                "string": "/bin/date"
+            },
+            "predicateObject2": {
+                "com.bbn.tc.schema.avro.cdm18.UUID": "7A350F75-9945-425D-8599-15CEBD426F06"
+            },
+            "predicateObject2Path": {
+                "string": "/libexec/ld-elf.so.1"
+            },
+            "timestampNanos": 1523478988088604439,
+            "name": {
+                "string": "aue_execve"
+            },
+            "parameters": {
+                "array": []
+            },
+            "location": null,
+            "size": null,
+            "programPoint": null,
+            "properties": {
+                "map": {
+                    "host": "83c8ed1f-5045-dbcd-b39f-918f0df4f851",
+                    "cmdLine": "date",
+                    "return_value": "-1",
+                    "exec": "bash",
+                    "ppid": "1349"
+                }
+            }
+        }
+    },
+    "CDMVersion": "18",
+    "source": "SOURCE_FREEBSD_DTRACE_CADETS"
+}

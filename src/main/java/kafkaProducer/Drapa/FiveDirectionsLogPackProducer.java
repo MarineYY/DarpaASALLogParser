@@ -1,16 +1,20 @@
 package kafkaProducer.Drapa;
 
-import LogParser.DRAPA.CADETSLogParser;
+import LogParser.DRAPA.FiveDirectionsLogParser;
+import LogParser.DRAPA.TheiaLogParser;
 import logSerialization.LogPackSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import provenenceGraph.dataModel.PDM;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Properties;
 
-public class CADETSLogPackProducer {
+public class FiveDirectionsLogPackProducer {
     public static int jsonCount = 0, logCount = 0, logPackCount = 1;
     public static void main(String[] args) throws IOException {
 
@@ -22,8 +26,9 @@ public class CADETSLogPackProducer {
         /*
         Folder : ta1-cadets-e3-official.json
          */
-        String folderPath = "D:\\WorkSpace\\DARPA\\ta1-cadets-e3-official.json\\";
+        String folderPath = "D:\\WorkSpace\\DARPA\\ta1-fivedirections-e3-official-3.json\\";
         System.out.println("start sending ...\n");
+        sendLog(new File(folderPath), properties, "topic-Five-T1");
         for (int i = 0; i < 2; i ++) {
             File file = new File(folderPath + "ta1-cadets-e3-official.json." + i);
             if (i == 0) file = new File(folderPath + "ta1-cadets-e3-official.json");
@@ -40,7 +45,7 @@ public class CADETSLogPackProducer {
         PDM.LogPack.Builder logpack_builder_test = PDM.LogPack.newBuilder();
 
         KafkaProducer<String, PDM.LogPack> kafkaProducer = new KafkaProducer<>(properties);
-        CADETSLogParser drapaCADETSLogParser = new CADETSLogParser();
+        FiveDirectionsLogParser drapaFiveDirectionsLogParser = new FiveDirectionsLogParser();
 
         //逐行读取json文件,并进行序列化
         while ((jsonline = br.readLine()) != null) {
@@ -61,14 +66,13 @@ public class CADETSLogPackProducer {
             }
 
             try {
-                PDM.Log log = drapaCADETSLogParser.jsonParse(jsonline);
+                PDM.Log log = drapaFiveDirectionsLogParser.jsonParse(jsonline);
                 if(log.getEventData().getEHeader().getTs() < 1522987200000000000L) {
                     logpack_builder_train.addData(log);
                 }
                 else{
                     logpack_builder_test.addData(log);
                 }
-
                 logCount++;
             }catch (NullPointerException e){
                 continue;
@@ -78,9 +82,6 @@ public class CADETSLogPackProducer {
         kafkaProducer.send(new ProducerRecord<>(topic + "-train", logpack_builder_train.build()));
         kafkaProducer.send(new ProducerRecord<>(topic + "-test", logpack_builder_test.build()));
 
-        System.out.println("jsonCount: " + jsonCount);
-        System.out.println("logCount: " + logCount);
-        System.out.println("logPackCount: " + logPackCount);
         br.close();
         kafkaProducer.close();
     }
