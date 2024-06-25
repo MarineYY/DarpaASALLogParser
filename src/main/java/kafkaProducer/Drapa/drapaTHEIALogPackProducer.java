@@ -20,14 +20,12 @@ public class drapaTHEIALogPackProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());
 
-//        File file = new File("src/main/systemLog/cadets/apt.log");
-//        File file = new File("src/main/systemLog/THEIA/ta1-theia-e3-official-6r.json/ta1-theia-e3-official-6r.json.8");
-//        sendLog(file, properties, "topic-HipsToMrd");
 
+//        sendLog(new File("src/systemLog/apt.log"), properties, "topic-test");
 //        /*
 //         * folder : src/main/systemLog/THEIA/ta1-theia-e3-official-1r.json
 //         * */
-//        String folderPathTHEIA = "src/main/systemLog/THEIA/ta1-theia-e3-official-1r.json/";
+//        String folderPathTHEIA = "D:/Program File/git_repository/dataFiles/darpa/theia/ta1-theia-e3-official-1r.json/";
 //        System.out.println("start sending ...\n");
 //        for (int i = 0; i < 10; i ++) {
 //            File file = new File(folderPathTHEIA + "ta1-theia-e3-official-1r.json." + i);
@@ -37,53 +35,52 @@ public class drapaTHEIALogPackProducer {
 //        }
 //        System.out.println("end...");
 
-//        /*
-//         * folder : src/main/systemLog/THEIA/ta1-theia-e3-official-3.json
-//         * */
-//        String folderPathTHEIA = "src/main/systemLog/THEIA/ta1-theia-e3-official-3.json/";
+        /*
+         * folder : src/main/systemLog/THEIA/ta1-theia-e3-official-3.json
+         * */
+//        String folderPathTHEIA = "D:/Program File/git_repository/dataFiles/darpa/theia/ta1-theia-e3-official-3.json/";
 //        System.out.println("start sending ...\n");
 //        for (int i = 0; i < 1; i ++) {
 //            File file = new File(folderPathTHEIA + "ta1-theia-e3-official-3.json." + i);
 //            if (i == 0) file = new File(folderPathTHEIA + "ta1-theia-e3-official-3.json");
 //            System.out.println("文件：  " + file.toString());
-//            sendLog(file, properties, "topic-THEIA-3");
+//            sendLog(file, properties, "topic-THEIA-1r");
 //        }
 //        System.out.println("end...");
 
         /*
          * folder : src/main/systemLog/THEIA/ta1-theia-e3-official-5m.json
          * */
-//        String folderPathTHEIA = "src/main/systemLog/THEIA/ta1-theia-e3-official-5m.json/";
+//        String folderPathTHEIA = "D:/Program File/git_repository/dataFiles/darpa/theia/ta1-theia-e3-official-5m.json/";
 //        System.out.println("start sending ...\n");
 //        for (int i = 0; i < 1; i ++) {
 //            File file = new File(folderPathTHEIA + "ta1-theia-e3-official-5m.json." + i);
 //            if (i == 0) file = new File(folderPathTHEIA + "ta1-theia-e3-official-5m.json");
 //            System.out.println("文件：  " + file.toString());
-//            sendLog(file, properties, "topic-THEIA-5m");
+//            sendLog(file, properties, "topic-THEIA-1r");
 //        }
 //        System.out.println("end...");
 
         /*
         * folder : ta1-theia-e3-official-6r.json
         * */
-        String folderPathTHEIA = "src/main/systemLog/THEIA/ta1-theia-e3-official-6r.json/";
+        String folderPathTHEIA = "D:/Program File/git_repository/dataFiles/darpa/theia/ta1-theia-e3-official-6r.json/";
         System.out.println("start sending ...\n");
         for (int i = 0; i < 13; i ++) {
             File file = new File(folderPathTHEIA + "ta1-theia-e3-official-6r.json." + i);
             if (i == 0) file = new File(folderPathTHEIA + "ta1-theia-e3-official-6r.json");
             System.out.println("文件：  " + file.toString());
-            sendLog(file, properties, "topic-THEIA-6r");
+            sendLog(file, properties, "topic-THEIA-1r");
         }
         System.out.println("end...");
+
 
     }
 
     public static void sendLog(File file, Properties properties, String topic) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String jsonline;
-        PDM.LogPack.Builder logpack_builder_train = PDM.LogPack.newBuilder();
-        PDM.LogPack.Builder logpack_builder_test = PDM.LogPack.newBuilder();
-
+        PDM.LogPack.Builder logpack_builder = PDM.LogPack.newBuilder();
 
         KafkaProducer<String, PDM.LogPack> kafkaProducer = new KafkaProducer<>(properties);
         drapaTHEIALogParser drapaTHEIALogParser = new drapaTHEIALogParser();
@@ -93,8 +90,7 @@ public class drapaTHEIALogPackProducer {
             jsonCount ++;
 
             if (jsonCount % 50 == 0){
-                kafkaProducer.send(new ProducerRecord<>(topic + "-train", logpack_builder_train.build()));
-                kafkaProducer.send(new ProducerRecord<>(topic + "-test", logpack_builder_test.build()));
+                kafkaProducer.send(new ProducerRecord<>(topic, logpack_builder.build()));
                 if (jsonCount % 300000 == 0) {
                     System.out.println("jsonCount: " + jsonCount);
                     System.out.println("logCount: " + logCount);
@@ -102,23 +98,14 @@ public class drapaTHEIALogPackProducer {
                     System.out.println("continue...\n");
                 }
                 logPackCount ++;
-//                if (jsonCount >= 2765999){
-//                    break;
-//                }
-                logpack_builder_train = PDM.LogPack.newBuilder();
-                logpack_builder_test = PDM.LogPack.newBuilder();
+                logpack_builder = PDM.LogPack.newBuilder();
 
             }
 
             ArrayList<PDM.Log> logs = drapaTHEIALogParser.jsonParse(jsonline);
             try{
                 for(PDM.Log log : logs) {
-                    if(log.getEventData().getEHeader().getTs() < 1523332800){
-                        logpack_builder_train.addData(log);
-                    }
-                    else{
-                        logpack_builder_test.addData(log);
-                    }
+                    logpack_builder.addData(log);
                     logCount++;
                 }
             }catch (NullPointerException e){
@@ -127,8 +114,7 @@ public class drapaTHEIALogPackProducer {
 
         }
 
-        kafkaProducer.send(new ProducerRecord<>(topic + "-train", logpack_builder_train.build()));
-        kafkaProducer.send(new ProducerRecord<>(topic + "-test", logpack_builder_test.build()));
+        kafkaProducer.send(new ProducerRecord<>(topic, logpack_builder.build()));
 
         System.out.println("jsonCount: " + jsonCount);
         System.out.println("logCount: " + logCount);

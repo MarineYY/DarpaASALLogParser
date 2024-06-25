@@ -25,19 +25,20 @@ public class win10LogPackProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());
 
+//        sendLog(new File("src/systemLog/apt.log"), properties, "topic-test");
         /*
         Folder : win10/benign.json
          */
 //        System.out.println("start sending ...\n");
-//        File file = new File("src/main/systemLog/win10/benign.json");
-//        sendLog(file, properties,"topic-win10-benign");
+//        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/win10/benign.json");
+//        sendLog(file, properties,"topic-win10");
 //        System.out.println("end...");
 
         /*
         Folder : win10/anomaly.json
          */
 //        System.out.println("start sending ...\n");
-//        File file = new File("src/main/systemLog/win10/anomaly.json");
+//        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/win10/anomaly.json");
 //        sendLog(file, properties,"topic-win10-malicious");
 //        System.out.println("end...");
 
@@ -46,17 +47,17 @@ public class win10LogPackProducer {
         Folder : winServer2012/benign.json
          */
 //        System.out.println("start sending ...\n");
-//        File file = new File("src/main/systemLog/winServer2012/benign.json");
-//        sendLog(file, properties,"topic-winS-benign");
+//        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/winserver/benign.json");
+//        sendLog(file, properties,"topic-winserver");
 //        System.out.println("end...");
 
         /*
         Folder : winServer2012/anomaly.json
          */
-//        System.out.println("start sending ...\n");
-//        File file = new File("src/main/systemLog/winServer2012/anomaly.json");
-//        sendLog(file, properties,"topic-winS-malicious");
-//        System.out.println("end...");
+        System.out.println("start sending ...\n");
+        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/winserver/anomaly.json");
+        sendLog(file, properties,"topic-winserver-malicious");
+        System.out.println("end...");
     }
 
 

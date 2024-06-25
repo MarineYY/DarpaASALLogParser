@@ -156,7 +156,7 @@ public class drapaTHEIALogParser {
             String parent_process_name = processCache.get(forkCache.get(subject));
             if (parent_process_name == null)  parent_process_name = "unknown";
 
-            PDM.EventHeader eventHeaderFork = setEventHeader((int) parentUUID.getLeastSignificantBits(), parentUUID.getMostSignificantBits(), parent_process_name, 0L);
+            PDM.EventHeader eventHeaderFork = setEventHeader((int) parentUUID.getLeastSignificantBits(), parentUUID.getMostSignificantBits(), parent_process_name, eventTimeStamp);
             PDM.ProcessEvent processEventFork = setProcessEvent((int) sonUUID.getLeastSignificantBits(), sonUUID.getMostSignificantBits(), process_name, "fork");
             PDM.Log logFork = log_builder
                     .setUHeader(uheaderFork)

@@ -82,10 +82,6 @@ public class drapaCADETSLogParser {
                 logContent = PROCESS_LOAD;
                 logCategory = "Process";
                 break;
-//            case "EVENT_OPEN":
-//                logContent = FILE_OPEN;
-//                logCategory = "File";
-//                break;
             case "EVENT_READ":
                 logContent = FILE_READ;
                 logCategory = "File";
@@ -193,7 +189,7 @@ public class drapaCADETSLogParser {
 
             String parent_process_name = processNameCache.get(parentProcessCache.get(subject));
             if (parent_process_name == null) process_name = "unknown";
-            PDM.EventHeader eventHeaderFork = setEventHeader((int) parentUUID.getLeastSignificantBits(), parentUUID.getMostSignificantBits(), parent_process_name, 0L);
+            PDM.EventHeader eventHeaderFork = setEventHeader((int) parentUUID.getLeastSignificantBits(), parentUUID.getMostSignificantBits(), parent_process_name, eventTimeStamp - 1);
             PDM.ProcessEvent processEventFork = setProcessEvent((int) sonUUID.getLeastSignificantBits(), sonUUID.getMostSignificantBits(), process_name, "fork");
             PDM.Log logFork = log_builder
                     .setUHeader(uheaderFork)
