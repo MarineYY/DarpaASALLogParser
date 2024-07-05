@@ -7,7 +7,7 @@ import provenenceGraph.dataModel.PDM;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
-import static kafkaProducer.nodLink.win10LogPackProducer.jsonCount;
+import static kafkaProducer.NodLink.win10LogPackProducer.jsonCount;
 import static provenenceGraph.dataModel.PDM.File.FileType.FILE_UNKNOWN;
 import static provenenceGraph.dataModel.PDM.LogContent.*;
 
