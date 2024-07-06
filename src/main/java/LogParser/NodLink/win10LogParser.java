@@ -205,7 +205,6 @@ public class win10LogParser {
                 .setAddress2(Integer.parseInt(splits[2]))
                 .setAddress3(Integer.parseInt(splits[3]))
                 .build();
-
         return ipAddress;
     }
 

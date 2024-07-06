@@ -26,16 +26,16 @@ public class ubantuLogPackProducer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());
 
-        System.out.println("start sending ...\n");
-        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/ubantu/benign.json");
-        sendLog(file, properties,"topic-ubantu");
-        System.out.println("end...");
-
-
 //        System.out.println("start sending ...\n");
-//        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/ubantu/anomaly.json");
-//        sendLog(file, properties,"topic-ubantu");
+//        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/ubantu/benign.json");
+//        sendLog(file, properties,"Ubantu-train");
 //        System.out.println("end...");
+
+
+        System.out.println("start sending ...\n");
+        File file = new File("D:/Program File/git_repository/dataFiles/ASAL/ubantu/anomaly.json");
+        sendLog(file, properties,"Ubantu-test");
+        System.out.println("end...");
     }
 
     public static void sendLog(File file, Properties properties, String topic) throws IOException {

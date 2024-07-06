@@ -22,10 +22,10 @@ public class CADETSLogParser {
         this.netFlowCache = new HashMap<>();
     }
 
-    public PDM.Log InitLog(Integer process_id, String process_name, String filepath){
+    public PDM.Log InitLog(UUID subject, String process_name, UUID object, String filepath){
 
-        PDM.EventHeader eventHeader = setEventHeader(process_id, 0, process_name, eventTimeStamp);
-        PDM.FileEvent fileEvent = setFileEvent(FILE_UNKNOWN, 0L, filepath);
+        PDM.EventHeader eventHeader = setEventHeader((int)subject.getLeastSignificantBits(), subject.getMostSignificantBits(), process_name, eventTimeStamp);
+        PDM.FileEvent fileEvent = setFileEvent(FILE_UNKNOWN, object.getMostSignificantBits(), filepath);
 
         PDM.Log log = log_builder
                 .setUHeader(uheader)
@@ -38,9 +38,9 @@ public class CADETSLogParser {
         return log;
     }
 
-    public PDM.Log InitLog(Integer process_id, String process_name, UUID object, PDM.NetEvent.Direction direction){
+    public PDM.Log InitLog(UUID subject, String process_name, UUID object, PDM.NetEvent.Direction direction){
 
-        PDM.EventHeader eventHeader = setEventHeader(process_id, 0, process_name, eventTimeStamp);
+        PDM.EventHeader eventHeader = setEventHeader((int)subject.getLeastSignificantBits(), subject.getMostSignificantBits(), process_name, eventTimeStamp);
         PDM.NetEvent netEventCache = netFlowCache.get(object);
 
         if (netEventCache == null) return null;
@@ -56,10 +56,9 @@ public class CADETSLogParser {
         return log;
     }
 
-    public PDM.Log InitLog(Integer process_id, String process_name, String parent_process_name, String cmdLine){
-
-        PDM.EventHeader eventHeader = setEventHeader(process_id, 0, process_name, eventTimeStamp);
-        PDM.ProcessEvent processEvent = setProcessEvent(0,0, parent_process_name, cmdLine);
+    public PDM.Log InitLog(UUID subject, String parent_process_name, UUID object, String process_name, String cmdLine){
+        PDM.EventHeader eventHeader = setEventHeader((int)subject.getLeastSignificantBits(), subject.getMostSignificantBits(), parent_process_name, eventTimeStamp);
+        PDM.ProcessEvent processEvent = setProcessEvent((int)object.getLeastSignificantBits(),object.getMostSignificantBits(), process_name, cmdLine);
 
         PDM.Log log = log_builder
                 .setUHeader(uheader)
@@ -71,6 +70,7 @@ public class CADETSLogParser {
                 .build();
         return log;
     }
+
     public PDM.Log jsonParse(String JsonData){
         //deSerialize
         JSONObject jsonobj;
@@ -115,8 +115,8 @@ public class CADETSLogParser {
                 logCategory = "Process";
                 break;
             case "EVENT_EXECUTE":
-                logContent = PROCESS_EXEC;
-                logCategory = "Process";
+                logContent = PROCESS_LOAD;
+                logCategory = "File";
                 break;
             case "EVENT_OPEN":
                 logContent = FILE_OPEN;
@@ -153,8 +153,10 @@ public class CADETSLogParser {
                 .setClientID(PDM.HostUUID.newBuilder().setHostUUID(hostUUID).build()
                 ).build();
 
+        UUID subject = null;
         UUID object = null;
         try {
+            subject = UUID.fromString(event.getJSONObject("subject").getString("com.bbn.tc.schema.avro.cdm18.UUID"));
             object = UUID.fromString(event.getJSONObject("predicateObject").getString("com.bbn.tc.schema.avro.cdm18.UUID"));
         }catch (NullPointerException e){
             return null;
@@ -163,34 +165,30 @@ public class CADETSLogParser {
         eventTimeStamp = event.getLong("timestampNanos");
         if (logCategory.equals("Process")) {
             String process_name = event.getJSONObject("properties").getJSONObject("map").getString("exec");
-            int process_id = event.getJSONObject("properties").getJSONObject("map").getInteger("ppid");;
 
-            String parent_process_name = (eventType.equals("EVENT_EXECUTE")) ? event.getJSONObject("predicateObjectPath").getString("string") : process_name;
-            String cmdLine = (eventType.equals("EVENT_EXECUTE")) ? event.getJSONObject("properties").getJSONObject("map").getString("cmdLine") : "aue_fork";
+            String parent_process_name = process_name;
+            String cmdLine = "aue_fork";
 
-            PDM.Log log = InitLog(process_id, process_name, parent_process_name, cmdLine);
+            PDM.Log log = InitLog(subject, parent_process_name, object, process_name, cmdLine);
 
             return log;
         }
         else if (logCategory.equals("File")) {
             String process_name = event.getJSONObject("properties").getJSONObject("map").getString("exec");
-            int process_id = event.getJSONObject("properties").getJSONObject("map").getInteger("ppid");
 
             String filepath = event.getJSONObject("predicateObjectPath").getString("string");
 
-            PDM.Log log = InitLog(process_id, process_name, filepath);
+            PDM.Log log = InitLog(subject, process_name, object, filepath);
 
             return log;
         }
         else if (logCategory.equals("Network")) {
             String process_name = event.getJSONObject("properties").getJSONObject("map").getString("exec");
-            int process_id = event.getJSONObject("properties").getJSONObject("map").getInteger("ppid");
 
-            PDM.Log log = InitLog(process_id, process_name, object, direction);
+            PDM.Log log = InitLog(subject, process_name, object, direction);
 
             return log;
         }
         return null;
     }
-
 }

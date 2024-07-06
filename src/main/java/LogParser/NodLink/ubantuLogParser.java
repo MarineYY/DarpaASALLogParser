@@ -11,6 +11,7 @@ import provenenceGraph.dataModel.PDM;
 
 import java.lang.String;
 
+import static LogParser.NodLink.win10LogParser.convertToIP;
 import static provenenceGraph.dataModel.PDM.LogContent.*;
 
 public class ubantuLogParser {
@@ -87,12 +88,12 @@ public class ubantuLogParser {
             String parent_process_name = jsonobj.getString("proc.pname");
 
             if (parent_process_commandline == null) return null;
-            UUID parent_process_uuid = UUID.nameUUIDFromBytes(parent_process_commandline.getBytes(StandardCharsets.UTF_8));
-            int parent_process_id = parent_process_uuid.hashCode();
+            UUID parent_process_uuid = UUID.nameUUIDFromBytes(parent_process_name.getBytes(StandardCharsets.UTF_8));
+            int parent_process_id = (int)parent_process_uuid.getMostSignificantBits();
             Long parent_process_timestamp = parent_process_uuid.getLeastSignificantBits();
 
-            UUID process_uuid = UUID.nameUUIDFromBytes(process_commandline.getBytes(StandardCharsets.UTF_8));
-            int process_id = process_uuid.hashCode();
+            UUID process_uuid = UUID.nameUUIDFromBytes(process_name.getBytes(StandardCharsets.UTF_8));
+            int process_id = (int)process_uuid.getMostSignificantBits();
             Long process_timestamp = process_uuid.getLeastSignificantBits();
 
             // 设置eventheader --- subject
@@ -134,8 +135,8 @@ public class ubantuLogParser {
             String filepath = jsonobj.getString("fd.name");
             if (filepath == null) return null;
 
-            UUID process_uuid = UUID.nameUUIDFromBytes(process_commandline.getBytes(StandardCharsets.UTF_8));
-            int process_id = process_uuid.hashCode();
+            UUID process_uuid = UUID.nameUUIDFromBytes(process_name.getBytes(StandardCharsets.UTF_8));
+            int process_id = (int)process_uuid.getMostSignificantBits();
             Long process_timestamp = process_uuid.getLeastSignificantBits();
 
             UUID file_uuid = UUID.nameUUIDFromBytes(filepath.getBytes(StandardCharsets.UTF_8));
@@ -180,10 +181,10 @@ public class ubantuLogParser {
             if (networkInfo == null) return null;
             if(networkInfo.indexOf(":") < 0 || networkInfo.indexOf("->") < 0) return null;
 
-            UUID process_uuid = UUID.nameUUIDFromBytes(process_commandline.getBytes(StandardCharsets.UTF_8));
-            int process_id = process_uuid.hashCode();
+            UUID process_uuid = UUID.nameUUIDFromBytes(process_name.getBytes(StandardCharsets.UTF_8));
+            int process_id = (int)process_uuid.getMostSignificantBits();
             Long process_timestamp = process_uuid.getLeastSignificantBits();
-            Tuple4<Integer, Integer, Integer, Integer> network = getNetworkInfo(networkInfo);
+            Tuple4<PDM.IPAddress, Integer, PDM.IPAddress, Integer> network = getNetworkInfo(networkInfo);
 
             // 设置 Subject
             PDM.Process proc_subject = PDM.Process.newBuilder()
@@ -199,8 +200,8 @@ public class ubantuLogParser {
             //设置object
             PDM.NetEvent.Builder netevent_builder = PDM.NetEvent.newBuilder();
             PDM.NetEvent netEvent = netevent_builder
-                    .setSip(PDM.IPAddress.newBuilder().setAddress(network.f0).build())
-                    .setDip(PDM.IPAddress.newBuilder().setAddress(network.f2).build())
+                    .setSip(network.f0)
+                    .setDip(network.f2)
                     .setSport(network.f1)
                     .setDport(network.f3)
                     .setDirect(direction)
@@ -221,22 +222,14 @@ public class ubantuLogParser {
         return null;
     }
 
-    public static Tuple4<Integer, Integer, Integer, Integer> getNetworkInfo(String networkInfo){
+    public static Tuple4<PDM.IPAddress, Integer, PDM.IPAddress, Integer> getNetworkInfo(String networkInfo){
 
-        Integer sip = convertToDip(networkInfo.substring(0, networkInfo.indexOf(":")));
+        PDM.IPAddress sip = convertToIP(networkInfo.substring(0, networkInfo.indexOf(":")));
         Integer source_port = Integer.parseInt(networkInfo.substring(networkInfo.indexOf(":") + 1, networkInfo.indexOf("-")));
         String dipstring = networkInfo.substring(networkInfo.indexOf(">") + 1);
-        Integer dip = convertToDip(dipstring.substring(0, dipstring.indexOf(":")));
+        PDM.IPAddress dip = convertToIP(dipstring.substring(0, dipstring.indexOf(":")));
         Integer dest_port = Integer.parseInt(dipstring.substring(dipstring.indexOf(":") + 1));
         return Tuple4.of(sip, source_port, dip, dest_port);
     }
 
-    public static Integer convertToDip(String remoteIp){
-        String[] splits = remoteIp.split("\\.");
-        String res = "";
-        for (String str : splits){
-            res += str;
-        }
-        return (int)((Long.parseLong(res)) % 200000000);
-    }
 }

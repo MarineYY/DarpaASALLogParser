@@ -15,22 +15,22 @@ public class CADETSLogPackProducer {
     public static void main(String[] args) throws IOException {
 
         Properties properties = new Properties();
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.10.110:9092");
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());   // 配置键的序列化器
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, LogPackSerializer.class.getName());   // 配置值的序列化器
 
-        /*
-        Folder : ta1-cadets-e3-official.json
-         */
-        String folderPath = "D:\\WorkSpace\\DARPA\\ta1-cadets-e3-official.json\\";
         System.out.println("start sending ...\n");
-        for (int i = 0; i < 2; i ++) {
-            File file = new File(folderPath + "ta1-cadets-e3-official.json." + i);
-            if (i == 0) file = new File(folderPath + "ta1-cadets-e3-official.json");
-            System.out.println("文件：  " + file.toString());
-            sendLog(file, properties, "topic-CADETS-0");
+        String cadetsPath = "src/main/Documents/FilePath/Cadets.txt";
+        try(BufferedReader cadets = new BufferedReader(new FileReader(cadetsPath))){
+            String fileLine;
+            while ((fileLine = cadets.readLine()) != null) {
+                System.out.println("Now, the file being sent is: " + fileLine);
+                sendLog(new File(fileLine), properties,"CADETS");
+            }
+        }catch (IOException e){
+            e.printStackTrace();
         }
-        System.out.println("end...");
+        System.out.println("sending end...");
     }
 
     public static void sendLog(File file, Properties properties, String topic) throws IOException {
